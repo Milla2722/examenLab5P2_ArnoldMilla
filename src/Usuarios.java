@@ -2,7 +2,7 @@
 import java.util.Date;
 
 
-public class Usuarios {
+public abstract class Usuarios {
     protected String nombre, apellido, contrasena, departamento, numeroID;
     protected char  sexo;
     protected Date fnacimiento;
@@ -80,4 +80,6 @@ public class Usuarios {
         return "Usuarios{" + "nombre=" + nombre + ", apellido=" + apellido + ", contrasena=" + contrasena + ", departamento=" + departamento + ", numeroID=" + numeroID + ", sexo=" + sexo + ", fnacimiento=" + fnacimiento + '}';
     }
     
+    
+    public abstract void id();
 }

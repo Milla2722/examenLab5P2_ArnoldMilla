@@ -1,7 +1,9 @@
 
 import java.util.Date;
+import java.util.Random;
 
 public class Empleados extends Usuarios{
+    Random rand = new Random();
     private String carrera, puesto;
     private int Ttrabajado;
 
@@ -16,6 +18,11 @@ public class Empleados extends Usuarios{
         this.Ttrabajado = Ttrabajado;
     }
 
+    public void setNumeroID(String numeroID) {
+        this.numeroID = numeroID;
+    }
+
+    
     public String getCarrera() {
         return carrera;
     }
@@ -45,5 +52,52 @@ public class Empleados extends Usuarios{
         return super.toString() + "Empleados{" + "carrera=" + carrera + ", puesto=" + puesto + ", Ttrabajado=" + Ttrabajado + '}';
     }
     
-    
+    public void id(){
+        int finalR = rand.nextInt(10000,100000);
+        String id = "";
+        
+        if (departamento.equalsIgnoreCase("francisco morazan")){
+            int departR = rand.nextInt(1,29);
+            id += "01";
+            
+            if(departR < 10){
+                id += "0";
+                id += departR;
+            }
+            else{
+                id += departR;
+            }
+        }
+        else if(departamento.equalsIgnoreCase("comayagua")){
+            int departR = rand.nextInt(1,12);
+            id += "02";
+            
+            if(departR < 10){
+                id += "0";
+                id += departR;
+            }
+            else{
+                id += departR;
+            }
+        }
+        else if(departamento.equalsIgnoreCase("cortes")){
+            int departR = rand.nextInt(1,14);
+            id += "03";
+            
+            if(departR < 10){
+                id += "0";
+                id += departR;
+            }
+            else{
+                id += departR;
+            }
+        }
+        
+        id += "-";
+        id += fnacimiento.getYear()+1900;
+        id += "-";
+        id += finalR;
+        
+        setNumeroID(id);
+    }
 }
