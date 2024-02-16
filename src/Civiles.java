@@ -8,8 +8,8 @@ public class Civiles extends Usuarios{
     public Civiles() {
     }
 
-    public Civiles(String nombre, String apellido, String contrasena, String departamento, String numeroID, boolean sexo, Date fnacimiento) {
-        super(nombre, apellido, contrasena, departamento, numeroID, sexo, fnacimiento);
+    public Civiles(String nombre, String apellido, String contrasena, String departamento, char sexo, Date fnacimiento) {
+        super(nombre, apellido, contrasena, departamento, sexo, fnacimiento);
     }
 
     public ArrayList<Tramites> getTramites() {

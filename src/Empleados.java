@@ -2,14 +2,15 @@
 import java.util.Date;
 
 public class Empleados extends Usuarios{
-    private String carrera, puesto, Ttrabajado;
+    private String carrera, puesto;
+    private int Ttrabajado;
 
     public Empleados() {
         super();
     }
 
-    public Empleados(String carrera, String puesto, String Ttrabajado, String nombre, String apellido, String contrasena, String departamento, String numeroID, boolean sexo, Date fnacimiento) {
-        super(nombre, apellido, contrasena, departamento, numeroID, sexo, fnacimiento);
+    public Empleados(String carrera, String puesto, int Ttrabajado, String nombre, String apellido, String contrasena, String departamento, char sexo, Date fnacimiento) {
+        super(nombre, apellido, contrasena, departamento, sexo, fnacimiento);
         this.carrera = carrera;
         this.puesto = puesto;
         this.Ttrabajado = Ttrabajado;
@@ -31,11 +32,11 @@ public class Empleados extends Usuarios{
         this.puesto = puesto;
     }
 
-    public String getTtrabajado() {
+    public int getTtrabajado() {
         return Ttrabajado;
     }
 
-    public void setTtrabajado(String Ttrabajado) {
+    public void setTtrabajado(int Ttrabajado) {
         this.Ttrabajado = Ttrabajado;
     }
 

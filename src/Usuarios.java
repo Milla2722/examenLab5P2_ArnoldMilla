@@ -4,18 +4,17 @@ import java.util.Date;
 
 public class Usuarios {
     protected String nombre, apellido, contrasena, departamento, numeroID;
-    protected boolean sexo;
+    protected char  sexo;
     protected Date fnacimiento;
 
     public Usuarios() {
     }
 
-    public Usuarios(String nombre, String apellido, String contrasena, String departamento, String numeroID, boolean sexo, Date fnacimiento) {
+    public Usuarios(String nombre, String apellido, String contrasena, String departamento, char sexo, Date fnacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.contrasena = contrasena;
         this.departamento = departamento;
-        this.numeroID = numeroID;
         this.sexo = sexo;
         this.fnacimiento = fnacimiento;
     }
@@ -60,11 +59,11 @@ public class Usuarios {
         this.numeroID = numeroID;
     }
 
-    public boolean isSexo() {
+    public char isSexo() {
         return sexo;
     }
 
-    public void setSexo(boolean sexo) {
+    public void setSexo(char sexo) {
         this.sexo = sexo;
     }
 
