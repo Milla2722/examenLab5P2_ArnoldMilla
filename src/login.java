@@ -473,11 +473,6 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
 
         tf_nombreapellido_login.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        tf_nombreapellido_login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_nombreapellido_loginActionPerformed(evt);
-            }
-        });
         jPanel1.add(tf_nombreapellido_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 270, 30));
 
         bt_loginbutton_login.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -503,10 +498,6 @@ public class login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tf_nombreapellido_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nombreapellido_loginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_nombreapellido_loginActionPerformed
 
     private void bt_loginbutton_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginbutton_loginMouseClicked
         /////usuarios en bruto
@@ -578,7 +569,7 @@ public class login extends javax.swing.JFrame {
             }        
         }
         
-        ///modelo para table de solo un usuario
+        ///modelo para tabla de solo un usuario
         DefaultTableModel model3 = (DefaultTableModel) tbl_usuario_Civil.getModel();
         
         for (int cont = 0; cont < usuarios.size(); cont++) {
@@ -587,7 +578,7 @@ public class login extends javax.swing.JFrame {
                 namae += " ";
                 namae += usuarios.get(cont).getApellido();
                 Object [] modelo = {namae,usuarios.get(cont).getNumeroID(),usuarios.get(cont).getFnacimiento()};
-                model1.addRow(modelo);
+                model3.addRow(modelo);
             }
         }
         
@@ -597,7 +588,7 @@ public class login extends javax.swing.JFrame {
             if(usuarios.get(cont) instanceof Civiles && usuarios.get(cont).getNombre().equalsIgnoreCase((lbl_nombreU_Empleados.getText()))){
                 Civiles verif = (Civiles) usuarios.get(cont);
                 Object [] modelo = {verif.getTramites().get(cont).getNombre(),verif.getTramites().get(cont).getDescripcion(),verif.getTramites().get(cont).getFechaEnv(),verif.getTramites().get(cont).getNumeroID()};
-                model1.addRow(modelo);
+                model4.addRow(modelo);
             }
         }
     }//GEN-LAST:event_bt_loginbutton_loginMouseClicked
@@ -649,32 +640,26 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_nt_CivilesActionPerformed
 
     private void bt_tramite_CivilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_tramite_CivilesMouseClicked
-        ///////////si se pueden ver los tramites en general e igual los de uno solo pero, para guardar un nuevo tramite hay que darle dos veces al boton
+        ///////////para guardar un nuevo tramite hay que darle dos veces al boton, solo se agrega a la segundo vuelta
+        DefaultTableModel model2 = (DefaultTableModel) tbl_tramites_Civil.getModel();
+        
         for (int cont = 0; cont < usuarios.size(); cont++) {
             if(usuarios.get(cont) instanceof Civiles && usuarios.get(cont).getNombre().equalsIgnoreCase(lbl_nombreU_Empleados.getText())){
                 Civiles verif = (Civiles) usuarios.get(cont);
                 verif.getTramites().add(new Tramites(tf_nt_Civiles.getText(), txta_descT_Civiles.getText(), usuarios.get(cont).getNumeroID(), new Date()));
-            }
-        } 
-        
-        ////////modelo para tabla de tramites en general
-        DefaultTableModel model2 = (DefaultTableModel) tbl_tramites_Civil.getModel();
-        for (int cont = 0; cont < usuarios.size(); cont++) {
-            if(usuarios.get(cont) instanceof Civiles && usuarios.get(cont).getNombre().equalsIgnoreCase(lbl_nombreU_Empleados.getText())){
-                Civiles verif = (Civiles) usuarios.get(cont);
-                ////System.out.println(verif.getTramites()); /////probar a ver si guarda el tramite en consola
-                if(verif.getTramites().size() >= 1){
+                //System.out.println(verif.getTramites()); /////probar a ver si guarda el tramite en consola
+                if(verif.getTramites().size() > 0){
                     Object [] modelo = {verif.getTramites().get(cont).getNombre(),verif.getTramites().get(cont).getDescripcion(),verif.getTramites().get(cont).getFechaEnv(),verif.getTramites().get(cont).getNumeroID()};
                     model2.addRow(modelo);
-                }              
+                }
             }
-        }
+        } 
     }//GEN-LAST:event_bt_tramite_CivilesMouseClicked
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         //////cuando se cambia de tab se vacian los datos
-        tf_nt_Civiles.setText("");
-        lbl_nombreU_Empleados.setText("");
+        //tf_nt_Civiles.setText("");
+        //lbl_nombreU_Empleados.setText("");
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     /**
