@@ -613,6 +613,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_cerrarS_CivilesMouseClicked
 
     private void bt_modif_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_modif_EmpleadosMouseClicked
+        ////metodo de modificar civiles dentro del tab de empleados
         char sexo = 'm';
         if(jRadioButton1.isEnabled()){
             sexo = 'f';
@@ -661,6 +662,7 @@ public class login extends javax.swing.JFrame {
         for (int cont = 0; cont < usuarios.size(); cont++) {
             if(usuarios.get(cont) instanceof Civiles && usuarios.get(cont).getNombre().equalsIgnoreCase(lbl_nombreU_Empleados.getText())){
                 Civiles verif = (Civiles) usuarios.get(cont);
+                ////System.out.println(verif.getTramites()); /////probar a ver si guarda el tramite en consola
                 if(verif.getTramites().size() >= 1){
                     Object [] modelo = {verif.getTramites().get(cont).getNombre(),verif.getTramites().get(cont).getDescripcion(),verif.getTramites().get(cont).getFechaEnv(),verif.getTramites().get(cont).getNumeroID()};
                     model2.addRow(modelo);
