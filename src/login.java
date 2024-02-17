@@ -87,6 +87,12 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
+
         tbl_usuario_Civil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -146,7 +152,7 @@ public class login extends javax.swing.JFrame {
         txta_descT_Civiles.setRows(5);
         jScrollPane5.setViewportView(txta_descT_Civiles);
 
-        bt_tramite_Civiles.setText("jButton1");
+        bt_tramite_Civiles.setText("Añadir");
         bt_tramite_Civiles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_tramite_CivilesMouseClicked(evt);
@@ -642,16 +648,18 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_nt_CivilesActionPerformed
 
     private void bt_tramite_CivilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_tramite_CivilesMouseClicked
+        ///////////si se pueden ver los tramites en general e igual los de uno solo pero, para guardar un nuevo tramite hay que darle dos veces al boton
         for (int cont = 0; cont < usuarios.size(); cont++) {
             if(usuarios.get(cont) instanceof Civiles && usuarios.get(cont).getNombre().equalsIgnoreCase(lbl_nombreU_Empleados.getText())){
                 Civiles verif = (Civiles) usuarios.get(cont);
                 verif.getTramites().add(new Tramites(tf_nt_Civiles.getText(), txta_descT_Civiles.getText(), usuarios.get(cont).getNumeroID(), new Date()));
             }
         } 
+        
         ////////modelo para tabla de tramites en general
         DefaultTableModel model2 = (DefaultTableModel) tbl_tramites_Civil.getModel();
         for (int cont = 0; cont < usuarios.size(); cont++) {
-            if(usuarios.get(cont) instanceof Civiles){
+            if(usuarios.get(cont) instanceof Civiles && usuarios.get(cont).getNombre().equalsIgnoreCase(lbl_nombreU_Empleados.getText())){
                 Civiles verif = (Civiles) usuarios.get(cont);
                 if(verif.getTramites().size() >= 1){
                     Object [] modelo = {verif.getTramites().get(cont).getNombre(),verif.getTramites().get(cont).getDescripcion(),verif.getTramites().get(cont).getFechaEnv(),verif.getTramites().get(cont).getNumeroID()};
@@ -660,6 +668,12 @@ public class login extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_bt_tramite_CivilesMouseClicked
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        //////cuando se cambia de tab se vacian los datos
+        tf_nt_Civiles.setText("");
+        lbl_nombreU_Empleados.setText("");
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     /**
      * @param args the command line arguments
