@@ -49,7 +49,7 @@ public class Empleados extends Usuarios{
 
     @Override       ///////////////////////////////////Arreglar despues
     public String toString() {
-        return super.toString() + "Empleados{" + "carrera=" + carrera + ", puesto=" + puesto + ", Ttrabajado=" + Ttrabajado + '}';
+        return super.toString();
     }
     
     public void id(){

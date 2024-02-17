@@ -77,7 +77,7 @@ public abstract class Usuarios {
 
     @Override           ///////////////////////////////////Arreglar despues
     public String toString() {
-        return "Usuarios{" + "nombre=" + nombre + ", apellido=" + apellido + ", contrasena=" + contrasena + ", departamento=" + departamento + ", numeroID=" + numeroID + ", sexo=" + sexo + ", fnacimiento=" + fnacimiento + '}';
+        return numeroID;
     }
     
     
